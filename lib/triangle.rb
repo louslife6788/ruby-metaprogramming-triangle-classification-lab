@@ -11,15 +11,16 @@ class Triangle
     if not @sd_a + @sd_b > @sd_c && @sd_a + @sd_c > @sd_b && @sd_b + @sd_c > @sd_a 
       raise TriangleError
     end
-    if [@sd_a, @sd_b, @sd_c].any? {|side|side <=0}
+    if [@sd_a, @sd_b, @sd_c].any? {|side| side.to_i  < 0}
+      binding.pry
       raise TriangleError
     end
     if @sd_a == @sd_b && @sd_b == sd_c
-      :equilateral
+        :equilateral
     elsif @sd_a == @sd_b || @sd_a == @sd_c || @sd_b == @sd_c
-      :isosceles
+       :isosceles
     else 
-      :scalene
+       :scalene
     end 
   end
 
